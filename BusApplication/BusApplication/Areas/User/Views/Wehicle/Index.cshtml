@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BusApplication.Models.Wehicle>
+
+@{
+    ViewData["Title"] = "Pojazdy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white mt-3 text-center">Lista pojazdów</h1>
+
+@if (Model == null)
+{
+    <div class="alert alert-dismissible alert-primary text-dark mt-3">
+        <strong>Brak pojazdów...</strong>
+    </div>
+}
+else
+{
+    @foreach (var item in Model)
+    {
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white">@item.Brand @item.Model</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 mt-4">
+                        <h4 class="text-white">@Html.DisplayNameFor(model => model.YearOfManufacture): @Html.DisplayFor(modelItem => item.YearOfManufacture)</h4>
+                        <h4 class="text-white">@Html.DisplayNameFor(model => model.NumberOfSeats): @Html.DisplayFor(modelItem => item.NumberOfSeats)</h4>
+                        <div class="bg-white container p-3 my-4" style="border-radius: 10px;">
+                            <p>@Html.Raw(item.Description)</p>
+                        </div>
+                        <div class="col-5"></div>
+                        <div class="col-7 pt-3 text-white">
+                            @if (item.AirConditioning)
+                            {
+                                <h4><i class="fas fa-check" style="color: green; width: 30px;"></i> Klimatyzacja </h4>
+                            }
+                            else
+                            {
+                                <h4><i class="fas fa-times" style="color: red; width: 30px;"></i> Klimatyzacja </h4>
+                            }
+                        </div>
+                        <div class="col-5"></div>
+                        <div class="col-7 text-white">
+                            @if (item.Toilet)
+                            {
+                                <h4><i class="fas fa-check" style="color: green; width: 30px;"></i> Toaleta </h4>
+                            }
+                            else
+                            {
+                                <h4><i class="fas fa-times" style="color: red; width: 30px;"></i> Toaleta </h4>
+                            }
+                        </div>
+                        <div class="col-5"></div>
+                        <div class="col-7 text-white">
+                            @if (item.PremiumClass)
+                            {
+                                <h4><i class="fas fa-check" style="color: green; width: 30px;"></i> Klasa premium </h4>
+                            }
+                            else
+                            {
+                                <h4><i class="fas fa-times" style="color: red; width: 30px;"></i> Klasa premium </h4>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <img src="@item.ImageUrl" width="100%" style="border-radius:15px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

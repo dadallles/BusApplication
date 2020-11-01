@@ -1,0 +1,66 @@
+﻿@model BusApplication.Models.ViewModels.EndOfPurchaseAndPaymentDataShowVM
+
+@{
+    ViewData["Title"] = "Podsumowanie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1 class="text-white mt-3 text-center">Dane do przelewu</h1>
+
+<div class="container">
+    <div class="row bg-dark text-white p-3 m-3">
+        <div class="col-10">
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <h3>Nazwa odbiorcy</h3>
+                </div>
+                <div class="col-8">
+                    <h3>@Model.BankAccount.CompanyName</h3>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <h3>Adres odbiorcy</h3>
+                </div>
+                <div class="col-8">
+                    <h3>@Model.BankAccount.CompanyAddress</h3>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <h3>Kwota</h3>
+                </div>
+                <div class="col-8">
+                    <h3>@Model.TicketsValue zł</h3>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <h3>Nr. konta</h3>
+                </div>
+                <div class="col-8">
+                    <h3>@Model.BankAccount.AccountNumber</h3>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-4">
+                    <h3>Tytuł przelewu</h3>
+                </div>
+                <div class="col-8">
+                    <h3>Przelew nr. @Model.PaymentId</h3>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-12">
+                    <h3><strong>Bilet zostanie aktywowany po zatwierdzeniu wpłaty na konto!</strong></h3>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+

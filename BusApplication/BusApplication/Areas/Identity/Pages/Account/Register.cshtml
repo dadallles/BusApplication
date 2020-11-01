@@ -1,0 +1,156 @@
+﻿@page
+@model RegisterModel
+@{ ViewData["Title"] = "Rejestracja"; }
+
+<h1 class="text-white pt-3">@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-12 text-white-50">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Utwórz nowe konto.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.UserName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.UserName" class="form-control" />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.Email"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.PhoneNumber"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.FirstName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.LastName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.City"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.City" class="form-control" />
+                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.PostalCode"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.PostalCode" class="form-control" />
+                    <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.Street"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.Street" class="form-control" />
+                    <span asp-validation-for="Input.Street" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.HouseNumber"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.HouseNumber" class="form-control" min="1" />
+                    <span asp-validation-for="Input.HouseNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.FlatNumber"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.FlatNumber" class="form-control" min="1" />
+                    <span asp-validation-for="Input.FlatNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.Password"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                </div>
+                <div class="col-5">
+                    <p>
+                        <input type="checkbox" id="reg" />
+                        Akceptuję treść <a href="~/pdf/regulamin.pdf" style="color:white;"><i>regulaminu usługi</i></a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Załóż konto</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+        function validateInput() {
+            if (document.getElementById("reg").checked == false) {
+                swal("Błąd", "Musisz zaakceptować regulamin!", "error")
+                return false;
+            }
+
+            return true;
+        };
+    </script>
+}

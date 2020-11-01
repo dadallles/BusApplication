@@ -1,0 +1,89 @@
+﻿@model BusApplication.Models.ViewModels.ArrivalDepartureBusStopListVM
+
+@{ 
+   ViewData["Title"] = "Dodaj kurs";
+   Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<br />
+<br />
+<form method="post" asp-action="Insert" enctype="multipart/form-data">
+    <div class="row backgroundWhite border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12">
+            <h2 class="text-primary">Dodaj czasy przyjazdu/odjazdu</h2>
+            <input type="hidden" asp-for="TimetableId" />
+            <br />
+        </div>
+        <div class="col-12">
+            <div class="alert alert-dismissible alert-danger">
+                <strong>Wybierz odpowiedni czas dla każdego aktywnego pola. Tylko poprawnie wypełniony formularz skutkuje dodaniem kursu do bazy!</strong>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label> Przystanek </label>
+                </div>
+                <div class="col-4">
+                    <label> Przyjazd </label>
+                </div>
+                <div class="col-4">
+                    <label> Odjazd </label>
+                </div>
+            </div>
+            @for (int i = 0; i < Model.arrivalDepartureBusStopListVM.Count; i++)
+            {
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="arrivalDepartureBusStopListVM[i].BusStopName"> @Model.arrivalDepartureBusStopListVM[i].BusStopName </label>
+                        <input type="hidden" asp-for="arrivalDepartureBusStopListVM[i].BusStopId" />
+                    </div>
+                    @if (i == 0)
+                    {
+                        <div class="col-4">
+                            <input type="time" asp-for="arrivalDepartureBusStopListVM[i].ArrivalTime" class="form-control" id="@i A" disabled />
+                            <span asp-validation-for="arrivalDepartureBusStopListVM[i].ArrivalTime" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-4">
+                            <input type="time" asp-for="arrivalDepartureBusStopListVM[i].ArrivalTime" class="form-control" id="@i A" />
+                            <span asp-validation-for="arrivalDepartureBusStopListVM[i].ArrivalTime" class="text-danger"></span>
+                        </div>
+                    }
+                    @if (i == Model.arrivalDepartureBusStopListVM.Count-1)
+                    {
+                        <div class="col-4">
+                            <input type="time"   asp-for="arrivalDepartureBusStopListVM[i].DepartureTime" class="form-control" id="@i D" disabled />
+                            <span asp-validation-for="arrivalDepartureBusStopListVM[i].DepartureTime" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-4">
+                            <input type="time"   asp-for="arrivalDepartureBusStopListVM[i].DepartureTime" class="form-control" id="@i D" />
+                            <span asp-validation-for="arrivalDepartureBusStopListVM[i].DepartureTime" class="text-danger"></span>
+                        </div>
+                    }
+                </div>            
+            }
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Dodaj kurs</button>
+                </div>
+                <div class="col">
+                    <a asp-action="Index" class="btn btn-success form-control">Wróć do listy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+}

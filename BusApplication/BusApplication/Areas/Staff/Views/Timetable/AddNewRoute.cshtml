@@ -1,0 +1,153 @@
+﻿@model BusApplication.Models.ViewModels.AddNewRouteToTimetableVM
+
+@{
+    var title = "Dodaj kurs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="InsertNewRoute" enctype="multipart/form-data">
+
+    <div class="row mt-4 backgroundWhite border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-9">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Timetable.LineNameId">Nazwa linii</label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Timetable.LineNameId, Model.LineName, "Wybierz linię", new { @class = "form-control", required = "Wybierz linię" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Timetable.WehicleId">Pojazd</label>
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Timetable.WehicleId, Model.Wehicle, "Wybierz pojazd", new { @class = "form-control", required = "Wybierz linię" })
+                </div>
+            </div>
+            <div class="form-group border">
+                <div class="alert alert-dismissible alert-secondary">
+                    <strong>Dni kursowania</strong>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.Monday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.Monday" id="1" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.Monday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.Tuesday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.Tuesday" id="2" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.Tuesday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.Wednesday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.Wednesday" id="3" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.Wednesday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.Thursday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.Thursday" id="4" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.Thursday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.Friday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.Friday" id="5" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.Friday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.Saturday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.Saturday" id="6" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.Saturday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.OperatingDays.SundayAndHolidays"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.OperatingDays.SundayAndHolidays" id="7" class="form-control" />
+                        <span asp-validation-for="Timetable.OperatingDays.SundayAndHolidays" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group border">
+                <div class="alert alert-dismissible alert-secondary">
+                    <strong>Cennik</strong>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.TicketPrice.PricePerEntireRoute"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.TicketPrice.PricePerEntireRoute"  type="number" step="any" min="0.01" class="form-control" required />
+                        <span asp-validation-for="Timetable.TicketPrice.PricePerEntireRoute" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="Timetable.TicketPrice.PricePerSegment"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Timetable.TicketPrice.PricePerSegment"  type="number" step="any" min="0.01" class="form-control" required />
+                        <span asp-validation-for="Timetable.TicketPrice.PricePerSegment" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Dodaj</button>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success form-control">Wróć do listy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+        function validateInput() {
+            var n = $("input:checked").length;
+            if (n > 0) {
+                return true;
+            }
+            swal("Błąd", "Należy wybrać co najmniej jeden dzień kursowania!'", "error")
+            return false;
+        };
+
+    </script>
+}

@@ -1,0 +1,44 @@
+﻿@model BusApplication.Models.ViewModels.LineListForTimetableListVM
+
+@{
+    ViewData["Title"] = "Rozkład jazdy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white mt-3 text-center">Rozkład jazdy - obsługiwane linie</h1>
+
+@if (Model.lineForTimetableListVMs == null)
+{
+    <div class="alert alert-dismissible alert-primary text-dark mt-3">
+        <strong>Brak linii...</strong>
+    </div>
+}
+else
+{
+    @for(int i = 0; i < Model.lineForTimetableListVMs.Count; i++)
+    {
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">@Model.lineForTimetableListVMs[i].Name</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Lista przystanków:</p>
+                            <br />
+                            <p>@Html.Raw(Model.lineForTimetableListVMs[i].StationList)</p>
+                        </div>
+                    </div>
+                </div>
+                <form method="get" asp-action="Details" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" asp-for="lineForTimetableListVMs[i].Id" id="lineId" name="lineId" />
+                        <div class="col">
+                            <button type="submit" class="btn btn-info form-control">Szczegółowy rozkład</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+
+}

@@ -1,0 +1,34 @@
+﻿@model BusApplication.Models.ViewModels.NumberOfBusStops
+
+@{
+    ViewData["Title"] = "Dodaj linię";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<form method="get" asp-action="Insert" enctype="multipart/form-data">
+    <div class="row backgroundWhite border">
+        <div class="col-12">
+            <h2 class="text-primary">Dodaj nową linię - wybierz liczbę przystanków</h2>
+            <br />
+        </div>
+        <div class="col-8">
+            <div class="alert alert-dismissible alert-success">
+                <strong>Wybierz kolejno po sobie wszystkie nazwy przystanków na tej linii.</strong><br />
+                <strong>Po dodaniu do bazy nie będzie można ich modyfikować!</strong><br />
+                <strong>Min 3 | Max 50</strong>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="number"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="number" value="3" min="3" max="50" class="form-control" />
+                    <span asp-validation-for="number" class="text-danger"></span>
+                </div>
+            </div>
+            <partial name="_CreateAndBackToListButton" />
+        </div>
+    </div>
+</form>

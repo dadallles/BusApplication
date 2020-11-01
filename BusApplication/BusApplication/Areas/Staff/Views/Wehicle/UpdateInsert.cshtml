@@ -1,0 +1,147 @@
+﻿@model BusApplication.Models.Wehicle
+@{
+    var title = "Dodaj nowy pojazd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<form method="post" asp-action="UpdateInsert" enctype="multipart/form-data">
+    <div class="row backgroundWhite border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+            title = "Edytuj pojazd";
+        }
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Brand"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Brand" class="form-control" />
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Model"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="YearOfManufacture"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="YearOfManufacture" class="form-control" value="2000" />
+                    <span asp-validation-for="YearOfManufacture" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="NumberOfSeats"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="NumberOfSeats" class="form-control" />
+                    <span asp-validation-for="NumberOfSeats" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Description" class="form-control" style="height:300px;"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ImageUrl"></label>
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="AirConditioning"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="AirConditioning" class="form-control" />
+                    <span asp-validation-for="AirConditioning" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="PremiumClass"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="PremiumClass" class="form-control" />
+                    <span asp-validation-for="PremiumClass" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Toilet"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Toilet" class="form-control" />
+                    <span asp-validation-for="Toilet" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    @if (Model.Id != 0)
+                    {
+                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Dodaj</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Wróć do listy</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        @if (Model.Id != 0)
+        {
+            <div class="col-3">
+                <img src="@Model.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+            </div>
+        }
+    </div>
+</form>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+        function validateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                swal("Błąd!", "Dodaj obraz", "error")
+                return false;
+            }
+            return true;
+        };
+    </script>
+}

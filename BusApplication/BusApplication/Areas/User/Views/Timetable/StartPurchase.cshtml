@@ -1,0 +1,171 @@
+﻿@model BusApplication.Models.ViewModels.ChooseTicketsParametersVM
+
+@{
+    ViewData["Title"] = "Szczegóły biletu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    float StudentsPrice = Model.Price / 2;
+}
+
+<h1 class="text-white mt-3 text-center">Szczegóły biletu</h1>
+
+<div class="container">
+        <div class="row bg-dark text-white p-3 m-3">
+            <div class="col-10">
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h2>Data wyjazdu:</h2>
+                    </div>
+                    <div class="col-7">
+                        <h2>@Model.BusRoute.RouteDate.Day/@Model.BusRoute.RouteDate.Month/@Model.BusRoute.RouteDate.Year</h2>
+                    </div>
+                </div>
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h3>Stacja początkowa:</h3>
+                    </div>
+                    <div class="col-7 mb-1">
+                        @if (Model.DepartureTime.Minute < 10)
+                        {
+                            <h3>@Model.StartBusStopName <br />Odjazd: @Model.DepartureTime.Hour:<text>0</text>@Model.DepartureTime.Minute</h3>
+                        }
+                        else
+                        {
+                            <h3>@Model.StartBusStopName <br />Odjazd: @Model.DepartureTime.Hour:@Model.DepartureTime.Minute</h3>
+                        }
+                    </div>
+                    <div class="col-5">
+                        <h3>Stacja końcowa</h3>
+                    </div>
+                    <div class="col-7">
+                        @if (Model.ArrivalTime.Minute < 10)
+                        {
+                            <h3>@Model.EndBusStopName <br />Przyjazd: @Model.ArrivalTime.Hour:<text>0</text>@Model.ArrivalTime.Minute</h3>
+                        }
+                        else
+                        {
+                            <h3>@Model.EndBusStopName <br />Przyjazd: @Model.ArrivalTime.Hour:@Model.ArrivalTime.Minute</h3>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h2>Pojazd</h2>
+                    </div>
+                    <div class="col-7">
+                        <h2>@Model.Wehicle.Brand @Model.Wehicle.Model</h2>
+                    </div>
+                    <div class="col-5"></div>
+                    <div class="col-7 pt-3">
+                        @if (Model.Wehicle.AirConditioning)
+                        {
+                            <h4><i class="fas fa-check" style="color: green; width: 30px;"></i> Klimatyzacja </h4>
+                        }
+                        else
+                        {
+                            <h4><i class="fas fa-times" style="color: red; width: 30px;"></i> Klimatyzacja </h4>
+                        }
+                    </div>
+                    <div class="col-5"></div>
+                    <div class="col-7">
+                        @if (Model.Wehicle.Toilet)
+                        {
+                            <h4><i class="fas fa-check" style="color: green; width: 30px;"></i> Toaleta </h4>
+                        }
+                        else
+                        {
+                            <h4><i class="fas fa-times" style="color: red; width: 30px;"></i> Toaleta </h4>
+                        }
+                    </div>
+                    <div class="col-5"></div>
+                    <div class="col-7">
+                        @if (Model.Wehicle.PremiumClass)
+                        {
+                            <h4><i class="fas fa-check" style="color: green; width: 30px;"></i> Klasa premium </h4>
+                        }
+                        else
+                        {
+                            <h4><i class="fas fa-times" style="color: red; width: 30px;"></i> Klasa premium </h4>
+                        }
+                    </div>
+                </div>
+
+                <form method="post" asp-action="EndPurchase" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group row pt-4">
+                            <div class="col-6">
+                                <label asp-for="NumberOfNormalTickets"><h5>Ilość biletów normalnych</h5></label>
+                            </div>
+                            <div class="col-3">
+                                <input asp-for="NumberOfNormalTickets" class="form-control" id="normalTickets" min="0" max="@Model.BusRoute.AvailableSeats" />
+                                <span asp-validation-for="NumberOfNormalTickets" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label asp-for="NumberOfStudentsTickets"><h5>Ilość biletów studenckich i szkolnych</h5></label>
+                            </div>
+                            <div class="col-3">
+                                <input asp-for="NumberOfStudentsTickets" class="form-control" id="studentTickets" min="0" max="@Model.BusRoute.AvailableSeats" />
+                                <span asp-validation-for="NumberOfStudentsTickets" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label asp-for="NumberOfExtraBaggages"><h5>Ilość dodatkowego bagażu</h5></label>
+                            </div>
+                            <div class="col-3">
+                                <input asp-for="NumberOfExtraBaggages" class="form-control" id="baggages" min="0" max="@Model.BusRoute.AvailableSeats" />
+                                <span asp-validation-for="NumberOfExtraBaggages" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <input type="hidden" asp-for="BusRoute.Id" name="BusRouteId" />
+                        <input type="hidden" asp-for="StartBusStopName" />
+                        <input type="hidden" asp-for="EndBusStopName" />
+                        <input type="hidden" asp-for="DepartureTime" />
+                        <input type="hidden" asp-for="ArrivalTime"/>
+                        <input type="hidden" asp-for="IsEntireRoute"/>
+                        <input type="hidden" asp-for="NumberOfBusStops"/>
+                        <button type="submit" onclick="return validData()" class="btn btn-info form-control mt-3 mb-3">Kup bilet</button>
+                    </form>
+            </div>
+            
+
+
+            <div class="col-2">
+                <br />
+                <p>Cena za bilet normalny: <strong>@Model.Price zł</strong></p>
+                <p>Cena za bilet ulgowy: <strong>@StudentsPrice zł</strong></p>
+                <p>Cena za dodatkowy bagaż: <strong>5 zł</strong></p>
+                <p>Liczba dostępnych miejsc: <strong>@Model.BusRoute.AvailableSeats</strong></p>
+            </div>
+        </div>
+</div>
+
+@section scripts {
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+        function validData() {
+            var sumTickets = parseInt($("#normalTickets").val()) + parseInt($("#studentTickets").val());
+            var baggage = parseInt($("#baggages").val());
+            var availableSeats = parseInt(@Model.BusRoute.AvailableSeats);
+
+            if (sumTickets < 1) {
+                swal("Błąd", "Musisz wybrać co najmniej jedno miejsce!", "error")
+                return false;
+            }
+
+            if (sumTickets > availableSeats) {
+                swal("Błąd", "Sumaryczna liczba miejsc nie może być większa niż liczba dostępnych miejsc!" , "error")
+                return false;
+            }
+
+            if (baggage > sumTickets) {
+                swal("Błąd", "Sumaryczna liczba dodatkowych bagaży nie możę być większa od liczby wybranych miejsc!" , "error")
+                return false;
+            }
+
+            return true;
+        };
+    </script>
+}

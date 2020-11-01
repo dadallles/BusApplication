@@ -1,0 +1,53 @@
+﻿@model BusApplication.Models.BankAccount
+
+@{
+    ViewData["Title"] = "Edytuj konto bankowe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white mt-3 text-center">Edytuj konto bankowe</h1>
+
+<form method="post" asp-action="Save" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <div class="row bg-dark text-white p-3 m-3">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group px-3 row col-12">
+                <div class="col-4">
+                    <label asp-for="CompanyName"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="CompanyName" class="form-control" />
+                    <span asp-validation-for="CompanyName" class="text-danger" value="@Model.CompanyName"></span>
+                </div>
+            </div>
+            <div class="form-group px-3 row col-12">
+                <div class="col-4">
+                    <label asp-for="CompanyAddress"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="CompanyAddress" class="form-control" />
+                    <span asp-validation-for="CompanyAddress" class="text-danger" value="@Model.CompanyAddress"></span>
+                </div>
+            </div>
+            <div class="form-group px-3 row col-12">
+                <div class="col-4">
+                    <label asp-for="AccountNumber"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="AccountNumber" class="form-control" />
+                    <span asp-validation-for="AccountNumber" class="text-danger" value="@Model.AccountNumber"></span>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary form-control">Zapisz</button>
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Wróć</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,139 @@
+﻿@model BusApplication.Models.ViewModels.EditRouteVM
+
+@{
+    var title = "Edytuj kurs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Update" enctype="multipart/form-data">
+
+    <div class="row mt-4 backgroundWhite border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-12">
+            <h2 class="text-primary">@title</h2>
+            <br />
+        </div>
+        <div class="col-9">
+            <div class="form-group border">
+                <div class="alert alert-dismissible alert-secondary">
+                    <strong>Dni kursowania</strong>
+                </div>
+                <input type="hidden" asp-for="OperatingDays.Id" />
+                <input type="hidden" asp-for="TicketPrice.Id" />
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.Monday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.Monday" id="1" class="form-control" />
+                        <span asp-validation-for="OperatingDays.Monday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.Tuesday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.Tuesday" id="2" class="form-control" />
+                        <span asp-validation-for="OperatingDays.Tuesday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.Wednesday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.Wednesday" id="3" class="form-control" />
+                        <span asp-validation-for="OperatingDays.Wednesday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.Thursday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.Thursday" id="4" class="form-control" />
+                        <span asp-validation-for="OperatingDays.Thursday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.Friday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.Friday" id="5" class="form-control" />
+                        <span asp-validation-for="OperatingDays.Friday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.Saturday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.Saturday" id="6" class="form-control" />
+                        <span asp-validation-for="OperatingDays.Saturday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="OperatingDays.SundayAndHolidays"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="OperatingDays.SundayAndHolidays" id="7" class="form-control" />
+                        <span asp-validation-for="OperatingDays.SundayAndHolidays" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group border">
+                <div class="alert alert-dismissible alert-secondary">
+                    <strong>Cennik</strong>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="TicketPrice.PricePerEntireRoute"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TicketPrice.PricePerEntireRoute" type="number" step="any" min="0.01" class="form-control" required />
+                        <span asp-validation-for="TicketPrice.PricePerEntireRoute" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group px-3 row">
+                    <div class="col-4">
+                        <label asp-for="TicketPrice.PricePerSegment"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TicketPrice.PricePerSegment" type="number" step="any" min="0.01" class="form-control" required />
+                        <span asp-validation-for="TicketPrice.PricePerSegment" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-8 offset-4">
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" onclick="return validateInput()" class="btn btn-primary form-control">Dodaj</button>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success form-control">Wróć do listy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+    <script>
+        function validateInput() {
+            var n = $("input:checked").length;
+            if (n > 0) {
+                return true;
+            }
+            swal("Błąd", "Należy wybrać co najmniej jeden dzień kursowania!'", "error")
+            return false;
+        };
+
+    </script>
+}

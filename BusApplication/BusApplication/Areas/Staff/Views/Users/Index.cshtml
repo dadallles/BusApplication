@@ -1,0 +1,86 @@
+﻿
+@{ ViewData["Title"] = "Użytkownicy";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+
+                var status = Context.Request.Query["status"];
+
+                var employee = "text-primary";
+                var admin = "text-primary";
+                var user = "text-primary";
+                var all = "text-primary";
+
+                if (status == "employee")
+                {
+                    employee = "active text-white";
+                    admin = "text-primary";
+                    user = "text-primary";
+                    all = "text-primary";
+                }
+                else if (status == "admin")
+                {
+                    admin = "active text-white";
+                    employee = "text-primary";
+                    user = "text-primary";
+                    all = "text-primary";
+                }
+                else if (status == "canceled")
+                {
+                    user = "active text-white";
+                    employee = "text-primary";
+                    admin = "text-primary";
+                    all = "text-primary";
+                }
+                else
+                {
+                    all = "active text-white";
+                    employee = "text-primary";
+                    admin = "text-primary";
+                    user = "text-primary";
+                } }
+
+<br />
+<div class="border backgroundWhite" style="width: 110%;">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="p-2">
+            <h1 class="text-primary">Użytkownicy</h1>
+        </div>
+        <div class="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none" asp-controller="Users" asp-route-status="admin" asp-action="Index">
+                    <li class="list-group-item @admin">Admin</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Users" asp-route-status="employee" asp-action="Index">
+                    <li class="list-group-item @employee">Pracownik</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Users" asp-route-status="user" asp-action="Index">
+                    <li class="list-group-item @user">Użytkownik</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Users" asp-route-status="all" asp-action="Index">
+                    <li class="list-group-item @all">Wszyscy</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <table id="tblData" class="table table-striped table-bordered" style="width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Aktywne</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="https://cdn.tiny.cloud/1/n94ifuzvl80pchikopiwgz2esrw8n28dwcywvpejlqrregfp/tinymce/5/tinymce.min.js"></script>
+
+    <script src="~/js/UsersStaff.js"></script>
+}

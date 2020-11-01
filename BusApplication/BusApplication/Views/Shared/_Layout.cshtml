@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BusApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/others/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/lib/others/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/lib/others/toastr.min.css" />
+    <link rel="stylesheet" href="~/lib/others/sweetalert.min.css" />
+    @RenderSection("Styles", false)
+</head>
+<body style="background-color: #2B3E50;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" asp-area="User" asp-controller="Home" asp-action="Index">BusApplication</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="User" asp-controller="Wehicle" asp-action="Index">Pojazdy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="User" asp-controller="Timetable" asp-action="Index">Rozkład jazdy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="User" asp-controller="Timetable" asp-action="Search">Szukaj połączenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="User" asp-controller="Tickets" asp-action="Index">Moje bilety</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="User" asp-controller="Contact" asp-action="Index">Kontakt</a>
+                    </li>
+                    @if (User.IsInRole(BusApplication.Utility.StaticData.EmployeeRole))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Panel pracownika</a>
+                            <div class="dropdown-menu" style="background-color: silver;">
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="Wehicle" asp-action="Index">Pojazdy</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="BusStop" asp-action="Index">Przystanki</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="LineName" asp-action="Index">Linie autobusowe</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="Messages" asp-action="Index">Wiadomości</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="Timetable" asp-action="Index">Kursy</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="Tickets" asp-action="Index">Bilety i płatności</a>
+
+                            </div>
+                        </li>
+                    }
+                    @if (User.IsInRole(BusApplication.Utility.StaticData.AdminRole))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Panel Administratora</a>
+                            <div class="dropdown-menu" style="background-color: silver;">
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="Holidays" asp-action="Index">Święta</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="BankAccount" asp-action="Index">Konto bankowe</a>
+                                <a class="dropdown-item" asp-area="Staff" asp-controller="Users" asp-action="Index">Konta użytkowników</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <div>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted">
+        <div class="container text-light text-center">
+            &copy; BusApplication | Kontakt: +48 123 456 789 | E-mail: busapplication@gmail.com | <a href="~/pdf/regulamin.pdf" style="color:white;"><i>Regulamin usługi</i></a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/others/jquery-ui.min.js"></script>
+    <script src="~/lib/others/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/lib/others/jquery.serializejson.min.js"></script>
+    <script type="text/javascript" src="~/lib/others/toastr.min.js"></script>
+    <script type="text/javascript" src="~/lib/others/sweetalert.min.js"></script>
+    <script src="~/lib/others/e19c476714.js"></script>
+    <script src="~/js/cookies.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

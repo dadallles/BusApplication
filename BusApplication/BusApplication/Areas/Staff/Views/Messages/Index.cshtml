@@ -1,0 +1,69 @@
+﻿@model BusApplication.Models.Messages
+
+@{
+    ViewData["Title"] = "Wiadomości";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    var status = Context.Request.Query["status"];
+
+    var approved = "text-primary";
+    var pending = "text-primary";
+    var all = "text-primary";
+
+    if (status == "approved")
+    {
+        approved = "active text-white";
+    }
+    else
+    {
+        if (status == "pending")
+        {
+            pending = "active text-white";
+        }
+        else
+        {
+            all = "active text-white";
+        }
+    }
+
+}
+
+<div class="border backgroundWhite mt-4">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="p-2">
+            <h1 class="text-primary">Wiadomości</h1>
+        </div>
+        <div class="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none" asp-controller="Messages" asp-route-status="pending" asp-action="Index">
+                    <li class="list-group-item @pending">Oczekujące</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Messages" asp-route-status="approved" asp-action="Index">
+                    <li class="list-group-item @approved">Wysłano odpowiedź</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Messages" asp-route-status="all" asp-action="Index">
+                    <li class="list-group-item @all">Wszystkie</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <br /><br />
+    <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Mail</th>
+                <th>Title</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+
+
+</div>
+
+@section Scripts{
+    <script src="~/js/messagesStaff.js"></script>
+}

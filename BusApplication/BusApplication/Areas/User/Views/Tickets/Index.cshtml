@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "Moje bilety";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var status = Context.Request.Query["status"];
+
+    var approved = "text-primary";
+    var pending = "text-primary";
+    var canceled = "text-primary";
+    var all = "text-primary";
+
+    if (status == "approved")
+    {
+        approved = "active text-white";
+        pending = "text-primary";
+        canceled = "text-primary";
+        all = "text-primary";
+    }
+    else if (status == "pending")
+    {
+        pending = "active text-white";
+        approved = "text-primary";
+        canceled = "text-primary";
+        all = "text-primary";
+    }
+    else if (status == "canceled")
+    {
+        canceled = "active text-white";
+        approved = "text-primary";
+        pending = "text-primary";
+        all = "text-primary";
+    }
+    else
+    {
+        all = "active text-white";
+        approved = "text-primary";
+        pending = "text-primary";
+        canceled = "text-primary";
+    }
+}
+
+<br />
+<div class="border backgroundWhite" style="width: 110%;">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="p-2">
+            <h1 class="text-primary">Moje bilety</h1>
+        </div>
+        <div class="p-2">
+            <ul class="list-group list-group-horizontal-sm">
+                <a style="text-decoration:none" asp-controller="Tickets" asp-route-status="pending" asp-action="Index">
+                    <li class="list-group-item @pending">Nowe</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Tickets" asp-route-status="approved" asp-action="Index">
+                    <li class="list-group-item @approved">Aktywne</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Tickets" asp-route-status="canceled" asp-action="Index">
+                    <li class="list-group-item @canceled">Anulowane</li>
+                </a>
+                <a style="text-decoration:none" asp-controller="Tickets" asp-route-status="all" asp-action="Index">
+                    <li class="list-group-item @all">Wszystkie</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <table id="tblData" class="table table-striped table-bordered" style="width: 100%; text-align: center;">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Stacja początkowa</th>
+                <th>Odjazd</th>
+                <th>Stacja końcowa</th>
+                <th>Przyjazd</th>
+                <th>Bilety normalne</th>
+                <th>Bilety ulgowe</th>
+                <th>Bagaż dodatkowy</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/TicketsUser.js"></script>
+}

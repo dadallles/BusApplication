@@ -1,0 +1,200 @@
+﻿@model BusApplication.Models.Tickets
+
+@{
+    ViewData["Title"] = "Szczegóły biletu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white mt-3 text-center">Szczegóły biletu</h1>
+
+<div class="container">
+    <div class="row bg-dark text-white p-3 m-3" id="topdf">
+        <div class="col-10">
+            <div class="form-group row pt-3">
+                <div class="col-6">
+                    <h4>Data zakupu biletu:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.PurchaseDates</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-6">
+                    <h4>Kupujący:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-6">
+                    <h4>Data wyjazdu:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.BusRoute.RouteDate.Day/@Model.BusRoute.RouteDate.Month/@Model.BusRoute.RouteDate.Year</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-6">
+                    <h4>Stacja początkowa:</h4>
+                </div>
+                <div class="col-6 mb-1">
+                    @if (Model.Departure.Minute < 10)
+                    {
+                        <h4>@Model.StartBusStopName <br />Odjazd: @Model.Departure.Hour:<text>0</text>@Model.Departure.Minute</h4>
+                    }
+                    else
+                    {
+                        <h4>@Model.StartBusStopName <br />Odjazd: @Model.Departure.Hour:@Model.Departure.Minute</h4>
+                    }
+                </div>
+                <div class="col-6">
+                    <h4>Stacja końcowa</h4>
+                </div>
+                <div class="col-6">
+                    @if (Model.Arrival.Minute < 10)
+                    {
+                        <h4>@Model.EndBusStopName <br />Przyjazd: @Model.Arrival.Hour:<text>0</text>@Model.Arrival.Minute</h4>
+                    }
+                    else
+                    {
+                        <h4>@Model.EndBusStopName <br />Przyjazd: @Model.Arrival.Hour:@Model.Arrival.Minute</h4>
+                    }
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-6">
+                    <h4>Liczba biletów normalnych:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.NumberOfRegularTickets szt.</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-6">
+                    <h4>Liczba biletów studenkich:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.NumberOfStudentsTickets szt.</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-6">
+                    <h4>Liczba dodatkowych bagaży:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.NumberOfExtraBaggages szt.</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-6">
+                    <h4>Wartość biletów:</h4>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.Payment.Value zł</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-6">
+                    <h2>Status:</h2>
+                </div>
+                <div class="col-6">
+                    @if (Model.Payment.Status == "New")
+                    {
+                        <h2 style="color: red;"><strong>Oczekujący na płatność</strong></h2>
+                    }
+                    else if (Model.Payment.Status == "Confirmed")
+                    {
+                        <h2 style="color: green;"><strong>Opłacony</strong></h2>
+                        <h2>Dnia: @Model.Payment.ConfirmationDate</h2>
+                        @if (Model.Payment.ApplicationUser != null)
+                        {
+                            <h4>Zatwierdzony przez: @Model.Payment.ApplicationUser.FirstName @Model.Payment.ApplicationUser.LastName</h4>
+                        }
+                        else
+                        {
+                            <h4>Zatwierdzony przez: konto usunięte</h4>
+                        }
+                    }
+                    else
+                    {
+                        <h2 style="color: white;"><strong>Anulowany</strong></h2>
+                        <h2>Dnia: @Model.Payment.CanceledDate</h2>
+                        @if (Model.Payment.ApplicationUser != null)
+                        {
+                            <h4>Przez: @Model.Payment.ApplicationUser.FirstName @Model.Payment.ApplicationUser.LastName</h4>
+                        }
+                        else
+                        {
+                            <h4>Przez: konto usunięte</h4>
+                        }
+                    }
+                </div>
+            </div>
+
+        </div>
+
+        @if (Model.Payment.Status == "Confirmed")
+        {
+            <div class="form-group row col-2 pt-2">
+                <div id="qrcode" style="background-color: white; height: 128px; width: 128px;"></div>
+            </div>
+        }
+
+    </div>
+
+    <div class="row bg-dark text-white p-3 m-3">
+        <div class="col-10">
+            <div class="col-12">
+                @if (Model.Payment.Status == "New")
+                {
+                    <div class="col-4">
+                        <form method="post" asp-action="CancelTicket" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="@Model.Id" name="TicketId" />
+                            <button type="submit" class="btn btn-info form-control mt-3">Anuluj bilet</button>
+                        </form>
+                    </div>
+                }
+                @if (Model.Payment.Status == "Confirmed")
+                {
+                    <div class="col-4">
+                        <button onclick="generatePDF()" class="btn btn-primary form-control mt-3">Pobierz jako PDF</button>
+                    </div>
+                }
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control mt-3">Wróć do listy</a>
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/lib/others/jquery.min.js"></script>
+    <script src="~/lib/others/qrcode.js"></script>
+    <script src="~/lib/others/html2pdf.js"></script>
+   
+    <script>
+        $(function () {
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: "@Model.Id",
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+        });
+
+        function generatePDF() {
+            var element = document.getElementById("topdf");
+
+            html2pdf()
+                .from(element)
+                .save();
+        }
+
+    </script>
+} 

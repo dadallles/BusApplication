@@ -1,0 +1,134 @@
+﻿@model BusApplication.Models.ViewModels.SearchRouteVM
+
+@{
+    ViewData["Title"] = "Szukaj połączenia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white mt-3 text-center">Szukaj połączenia</h1>
+
+<div class="container">
+    <form method="get" asp-action="Search" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row bg-dark text-white p-3 m-3">
+            <div class="col-3">
+                <label asp-for="BusStopListStart"></label>
+                @Html.DropDownListFor(m => m.BusStopListStartId, Model.BusStopListStart, new { @class = "form-control", @id = "start" })
+            </div>
+            <div class="col-3">
+                <label asp-for="StartTime"></label>
+                <input asp-for="StartTime" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="BusStopListEnd"></label>
+                @Html.DropDownListFor(m => m.BusStopListEndId, Model.BusStopListEnd, new { @class = "form-control", @id = "end" })
+            </div>
+            <div class="col-3">
+                <br />
+                <button type="submit" onclick="return validData()" class="btn btn-info form-control">Szukaj</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        @if (Model.searchRouteShowRouteVMs != null)
+        {
+            <table id="dtHorizontalExample" class="table table-striped table-bordered" style="width: 100%; text-align: center;">
+                <thead class="table-info">
+                    <tr>
+                        <td>Nazwa linii</td>
+                        <td>Stacja początkowa</td>
+                        <td>Odjazd</td>
+                        <td>Stacja końcowa</td>
+                        <td>Przyjazd</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                        @if (Model.searchRouteShowRouteVMs.Count == 0)
+                        {
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered" style="width: 100%; text-align: center;">
+                                <tbody class="table-light">
+                                    <tr>
+                                        <td style="width: 100%;">Brak połączeń</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            @foreach (var item in Model.searchRouteShowRouteVMs)
+                            {
+                                <tr class="table-light">
+                                    <td style="width: 20%">@item.LineName</td>
+                                    <td style="width: 15%">@item.StartBusStopName</td>
+                                    <td style="width: 15%">@item.DepartureTime</td>
+                                    <td style="width: 15%">@item.EndBusStopName</td>
+                                    <td style="width: 15%">@item.ArrivalTime</td>
+                                    <td style="width: 10%">
+                                        <form method="get" asp-action="ShowBusStops" enctype="multipart/form-data">
+                                            <input type="hidden" asp-for="@item.TimetableId" id="TimetableId" name="TimetableId" />
+                                            <input type="hidden" asp-for="BusStopListStartId" id="BusStopListStartId" name="BusStopListStartId" />
+                                            <input type="hidden" asp-for="BusStopListEndId" id="BusStopListEndId" name="BusStopListEndId" />
+                                            <button type="submit" OnClientClick="window.document.forms[0].target='_blank';" class="btn btn-primary form-control" style="width: 100px;">Lista stacji</button>
+                                        </form>
+                                    </td>
+                                    <td style="width: 10%">
+                                        <form method="get" asp-action="StartPurchase" enctype="multipart/form-data">
+                                            <input type="hidden" asp-for="@item.TimetableId" id="TimetableId" name="TimetableId" />
+                                            <input type="hidden" asp-for="StartTime" id="StartTime" name="StartTime" />
+                                            <input type="hidden" asp-for="BusStopListEndId" id="BusStopListEndId" name="BusStopListEndId" />
+                                            <input type="hidden" asp-for="BusStopListStartId" id="BusStopListStartId" name="BusStopListStartId" />
+                                            <button type="submit" class="btn btn-danger form-control" style="width: 100px;">Kup bilet</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+
+@section Styles {
+    <style>
+        .dtHorizontalExampleWrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #dtHorizontalExample th, td {
+            white-space: nowrap;
+            width: 200px !important;
+        }
+
+        .dataTables_empty {
+            background-color: white;
+            color: black;
+        }
+    </style>
+}
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('.tab').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+}

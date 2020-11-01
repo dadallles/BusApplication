@@ -1,0 +1,608 @@
+﻿@model BusApplication.Models.ViewModels.LineTimetablesDetailsVM
+
+@{ 
+    ViewData["Title"] = "Rozkład jazdy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    bool EnableMonday = true;
+    bool EnableTuesday = true;
+    bool EnableWednesday = true;
+    bool EnableThursday = true;
+    bool EnableFriday = true;
+    bool EnableSaturday = true;
+    bool EnableSundayAndHolidays = true;
+    }
+
+<h1 class="text-white mt-3 text-center">@Model.LineName</h1>
+
+@*@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 1 && EnableMonday == true)
+    {
+        EnableMonday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Poniedziałek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab1" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 1)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[i].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableMonday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Poniedziałek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}*@
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 1 && EnableMonday == true)
+    {
+        EnableMonday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Poniedziałek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab1" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < Model.LineTimetableDetailsForDays.Count-1; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 1)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableMonday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Poniedziałek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 2 && EnableTuesday == true)
+    {
+        EnableTuesday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Wtorek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab2" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < Model.LineTimetableDetailsForDays.Count-1; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 2)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableTuesday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Wtorek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 3 && EnableWednesday == true)
+    {
+        EnableWednesday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Środa</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab3" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < Model.LineTimetableDetailsForDays.Count-1; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 3)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableWednesday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Środa</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 4 && EnableThursday == true)
+    {
+        EnableThursday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Czwartek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab4" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < Model.LineTimetableDetailsForDays.Count; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 4)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableThursday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Czwartek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 5 && EnableFriday == true)
+    {
+        EnableFriday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Piątek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab5" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < Model.LineTimetableDetailsForDays.Count; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 5)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableFriday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Piątek</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 6 && EnableSaturday == true)
+    {
+        EnableSaturday = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Sobota</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab6" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0; j < Model.LineTimetableDetailsForDays.Count; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 6)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableSaturday)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Sobota</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów tego dnia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@for (int i = 0; i < Model.LineTimetableDetailsForDays.Count; i++)
+{
+    @if (Model.LineTimetableDetailsForDays[i].OperatingDay == 7 && EnableSundayAndHolidays == true)
+    {
+        EnableSundayAndHolidays = false;
+        <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Niedziele i święta</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <table id="dtHorizontalExample" class="table table-striped table-bordered table-sm tab7" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        @foreach (var item in Model.BusStopsList)
+                                        {
+                                            <th>@item</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int j = 0;  j < Model.LineTimetableDetailsForDays.Count; j++)
+                                    {
+                                        @if (Model.LineTimetableDetailsForDays[j].OperatingDay == 7)
+                                        {
+                                            <tr>
+                                                @foreach (var item2 in Model.LineTimetableDetailsForDays[j].ArrivalsDepartures)
+                                                {
+                                                    <td>@item2</td>
+                                                }
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+@if (EnableSundayAndHolidays)
+{
+     <div class="jumbotron bg-dark mt-3">
+            <h1 class="text-white ml-3">Niedziele i święta</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-3 p-3">
+                        <div class="bg-white container p-3 mb-4" style="border-radius: 10px;">
+                            <p>Brak kursów w tych dniach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+
+@section Styles {
+    <style>
+        .dtHorizontalExampleWrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #dtHorizontalExample th, td {
+            white-space: nowrap;
+            width: 200px !important;
+        }
+
+        .dataTables_empty {
+            background-color: white;
+            color: black;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.tab1').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).ready(function () {
+            $('.tab2').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).ready(function () {
+            $('.tab3').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).ready(function () {
+            $('.tab4').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).ready(function () {
+            $('.tab5').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).ready(function () {
+            $('.tab6').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+
+        $(document).ready(function () {
+            $('.tab7').DataTable({
+                "scrollX": true,
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Polish.json"
+                }
+
+            });
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+}

@@ -1,0 +1,171 @@
+﻿@model BusApplication.Models.ViewModels.UserDetailsVM
+
+@{
+    ViewData["Title"] = "Szczegóły użytkownika";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-white mt-3 text-center">Szczegóły użytkownika</h1>
+
+<div class="container">
+    <div class="row bg-dark text-white p-3 m-3">
+        <div class="col-12">
+            <div class="form-group row pt-3">
+                <div class="col-5">
+                    <h4>Nazwa użytkownika:</h4>
+                </div>
+                <div class="col-7">
+                    <h4>@Model.ApplicationUser.UserName</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-5">
+                    <h4>Imię i nazwisko:</h4>
+                </div>
+                <div class="col-7">
+                    <h4>@Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-5">
+                    <h4>E-mail:</h4>
+                </div>
+                <div class="col-7">
+                    <h4>@Model.ApplicationUser.Email</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-5">
+                    <h4>Numer telefonu:</h4>
+                </div>
+                <div class="col-7">
+                    <h4>@Model.ApplicationUser.PhoneNumber</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-5">
+                    <h4>Adres:</h4>
+                </div>
+                <div class="col-7">
+                    @if (Model.ApplicationUser.FlatNumber != null)
+                    {
+                        <h4>ul. @Model.ApplicationUser.Street @Model.ApplicationUser.HouseNumber m. @Model.ApplicationUser.FlatNumber</h4>
+                    }
+                    else
+                    {
+                        <h4>ul. @Model.ApplicationUser.Street @Model.ApplicationUser.HouseNumber</h4>
+                    }
+                    <h4>@Model.ApplicationUser.PostalCode @Model.ApplicationUser.City</h4>
+                </div>
+            </div>
+            <div class="form-group row pt-3">
+                <div class="col-5">
+                    <h4>Konto zablokowane:</h4>
+                </div>
+                <div class="col-7">
+                    @if (Model.ApplicationUser.LockoutEnd == null)
+                    {
+                        <h4 style="color: green;">Nie</h4> }
+                    else
+                    {
+                        <h4 style="color: red;">Tak</h4>
+                    }
+                </div>
+            </div>
+            <div class="form-group row pt-2">
+                <div class="col-12">
+                    <h2>Role:</h2>
+                </div>
+            </div>
+            @if (Model.Roles[0] != null)
+            {
+                <div class="form-group row pt-3 border-primary-">
+                    <div class="col-5">
+                        <h4>Admin:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Tak</h4>
+                        <form method="post" asp-action="DropAdminRole" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="@Model.ApplicationUser.Id" name="Id" />
+                            <button type="submit" class="btn btn-primary form-control mt-3">Usuń rolę Admin</button>
+                        </form>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h4>Admin:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Nie</h4>
+                        <form method="post" asp-action="AddAdminRole" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="@Model.ApplicationUser.Id" name="Id" />
+                            <button type="submit" class="btn btn-primary form-control mt-3">Dodaj rolę Admin</button>
+                        </form>
+                    </div>
+                </div>
+            }
+            @if (Model.Roles[1] != null)
+            {
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h4>Pracownik:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Tak</h4>
+                        <form method="post" asp-action="DropEmployeeRole" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="@Model.ApplicationUser.Id" name="Id" />
+                            <button type="submit" class="btn btn-primary form-control mt-3">Usuń rolę Pracownik</button>
+                        </form>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h4>Pracownik:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Nie</h4>
+                        <form method="post" asp-action="AddEmployeeRole" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="@Model.ApplicationUser.Id" name="Id" />
+                            <button type="submit" class="btn btn-primary form-control mt-3">Dodaj rolę Pracownik</button>
+                        </form>
+                    </div>
+                </div>
+            }
+            @if (Model.Roles[2] != null)
+            {
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h4>Użytkownik:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Tak</h4>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-group row pt-3">
+                    <div class="col-5">
+                        <h4>Użytkownik:</h4>
+                    </div>
+                    <div class="col-3">
+                        <h4>Nie</h4>
+                    </div>
+                </div>
+            }
+            <div class="form-group row pt-3">
+                    <div class="col-12">
+                        <a asp-action="Index" class="btn btn-success form-control">Wróć do listy</a>
+                    </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
