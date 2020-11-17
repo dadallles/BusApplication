@@ -831,6 +831,7 @@ namespace BusApplication.Areas.User.Controllers
                     {
                         NumberOfBusStops++;
                     }
+                    int xx = 1;
                 }
                 if (IsFirst == true && IsLast == true)
                 {

@@ -85,7 +85,7 @@ namespace BusApplication.Areas.Staff.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.BusStop.GetAll() });
+            return Json(new { data = _unitOfWork.BusStop.GetAll().Where(bs => bs.Name != "Brak") });
         }
 
         [HttpPut]

@@ -30,7 +30,7 @@ namespace BusApplication.Utility
 
                     client.Connect("smtp.poczta.onet.pl", 465, true);
 
-                    client.Authenticate("dawid.jonienc.bus@onet.pl", "asdasDsdf4g#g&dsSdD3@sd@fsd");
+                    client.Authenticate("dawid.jonienc.bus@onet.pl", "asdasDsdf4g#g&dsSdD3@sd@fsd@");
 
                     client.Send(message);
 

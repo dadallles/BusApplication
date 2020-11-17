@@ -162,7 +162,7 @@ namespace BusApplication.DataAccess.Data.Initializer
 
             Holidays hol10 = new Holidays()
             {
-                Name = "1 dzień Bożego Narodzenia",
+                Name = "2 dzień Bożego Narodzenia",
                 Day = 26,
                 Month = 12
             };

@@ -10906,11 +10906,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GIT\\Bus-Web-Application\\BusApplication\\BusApplication\\BusApplication.csproj",
+      "projectUniqueName": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication\\BusApplication.csproj",
       "projectName": "BusApplication",
-      "projectPath": "C:\\GIT\\Bus-Web-Application\\BusApplication\\BusApplication\\BusApplication.csproj",
+      "projectPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication\\BusApplication.csproj",
       "packagesPath": "C:\\Users\\Dawid-laptop\\.nuget\\packages\\",
-      "outputPath": "C:\\GIT\\Bus-Web-Application\\BusApplication\\BusApplication\\obj\\",
+      "outputPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -10931,8 +10931,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\GIT\\Bus-Web-Application\\BusApplication\\BusApplication.DataAccess\\BusApplication.DataAccess.csproj": {
-              "projectPath": "C:\\GIT\\Bus-Web-Application\\BusApplication\\BusApplication.DataAccess\\BusApplication.DataAccess.csproj"
+            "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.DataAccess\\BusApplication.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.DataAccess\\BusApplication.DataAccess.csproj"
             }
           }
         }
