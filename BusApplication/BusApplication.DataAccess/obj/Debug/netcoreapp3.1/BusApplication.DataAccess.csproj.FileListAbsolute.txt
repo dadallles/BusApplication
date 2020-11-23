@@ -26,3 +26,17 @@ C:\Users\Dawid-laptop\Desktop\BusApplication\BusApplication.DataAccess\obj\Debug
 C:\Users\Dawid-laptop\Desktop\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.csproj.CopyComplete
 C:\Users\Dawid-laptop\Desktop\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.dll
 C:\Users\Dawid-laptop\Desktop\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.pdb
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.DataAccess.deps.json
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.DataAccess.dll
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.DataAccess.pdb
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.Models.dll
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.Utility.dll
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.Models.pdb
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\bin\Debug\netcoreapp3.1\BusApplication.Utility.pdb
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.csprojAssemblyReference.cache
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.AssemblyInfoInputs.cache
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.AssemblyInfo.cs
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.csproj.CoreCompileInputs.cache
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.csproj.CopyComplete
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.dll
+C:\GIT\BusApplication\BusApplication\BusApplication.DataAccess\obj\Debug\netcoreapp3.1\BusApplication.DataAccess.pdb

@@ -78,7 +78,7 @@ namespace BusApplication.DataAccess.Data.Initializer
             });
             _db.SaveChanges();
 
-            //holidays
+            #region holidays
             Holidays hol1 = new Holidays()
             {
                 Name = "Nowy Rok",
@@ -168,7 +168,7 @@ namespace BusApplication.DataAccess.Data.Initializer
             };
             _db.Holidays.Add(hol10);
             _db.SaveChanges();
-
+            #endregion
 
         }
     }

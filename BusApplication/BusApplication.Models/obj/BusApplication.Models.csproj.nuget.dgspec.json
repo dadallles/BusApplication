@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj": {}
+    "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj": {
+    "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj",
+        "projectUniqueName": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj",
         "projectName": "BusApplication.Models",
-        "projectPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj",
+        "projectPath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj",
         "packagesPath": "C:\\Users\\Dawid-laptop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Models\\obj\\",
+        "outputPath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

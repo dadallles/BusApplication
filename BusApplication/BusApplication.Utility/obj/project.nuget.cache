@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "z3beGsjJEg5b7RaBNW8nwSJvPfeF/g5V9mMoNoZCwhK58ckDK8DcJVeDAASjqsej6QgbC7l+UQGTZrbEoFISQw==",
+  "dgSpecHash": "6mdOMWzbkOb5hHmPH2V41k3CaZdL65vN3NmWRmm51UjY1lPIU4M/Ve5jjNiO6vFCBFs8dXzQToTXd4Q7gna9Ew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Utility\\BusApplication.Utility.csproj",
+  "projectFilePath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Utility\\BusApplication.Utility.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dawid-laptop\\.nuget\\packages\\mailkit\\2.5.0\\mailkit.2.5.0.nupkg.sha512",
     "C:\\Users\\Dawid-laptop\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.8\\microsoft.aspnetcore.cryptography.internal.3.1.8.nupkg.sha512",

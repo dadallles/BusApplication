@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2t/GjQQCSCqdQwz9EAkAaP1w7Y448BhAWYAI6ewHIYTHRAu2sQuXMLyp+t4Qgfuym3+cIKjyJa0NH4JSM7hy+Q==",
+  "dgSpecHash": "7bXuty6IZUuu+IITKNrDxX4jwlkeZ7HQJuWqfXxX9/Ivq8EeEh4bvmubkWDk91KCUkZh5myWQMIVRICn3d320w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj",
+  "projectFilePath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Models\\BusApplication.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dawid-laptop\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Dawid-laptop\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

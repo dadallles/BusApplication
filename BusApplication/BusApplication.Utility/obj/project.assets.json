@@ -4264,11 +4264,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Utility\\BusApplication.Utility.csproj",
+      "projectUniqueName": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Utility\\BusApplication.Utility.csproj",
       "projectName": "BusApplication.Utility",
-      "projectPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Utility\\BusApplication.Utility.csproj",
+      "projectPath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Utility\\BusApplication.Utility.csproj",
       "packagesPath": "C:\\Users\\Dawid-laptop\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication.Utility\\obj\\",
+      "outputPath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

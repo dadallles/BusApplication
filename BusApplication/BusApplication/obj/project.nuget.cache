@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zLAIUU/pzMRNHWB/BOZQqU5/Wz/PTvxm/EcO4UO9Ks5X6bIyu1ZfggCOZqzAQsw5PlQMOmMoc9xSWpVYSqAcsw==",
+  "dgSpecHash": "5v2JI9Lh/OGdQW6Qs/JayexnfgDMBG3zdxUfn8Kt/EDqzZ4uZzaKmT0fLJlklHWK8N75Pa05ysXAZw6O1/eMUA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dawid-laptop\\Desktop\\BusApplication\\BusApplication\\BusApplication.csproj",
+  "projectFilePath": "C:\\GIT\\BusApplication\\BusApplication\\BusApplication\\BusApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dawid-laptop\\.nuget\\packages\\mailkit\\2.5.0\\mailkit.2.5.0.nupkg.sha512",
     "C:\\Users\\Dawid-laptop\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
